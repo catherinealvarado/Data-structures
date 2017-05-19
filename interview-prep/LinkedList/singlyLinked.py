@@ -23,7 +23,10 @@ class LinkedList(object):
         self.head = head
 
     def insert(self,key):
-        """Adds node to the back of linked list."""
+        """
+        Adds node to the back of linked list.
+        Running time: O(n)
+        """
         node = Node(key)
         if not self.head:
             self.head = node
@@ -34,7 +37,10 @@ class LinkedList(object):
             curr.next = node
 
     def push_front(self,key):
-        """Adds node to the front of linked list."""
+        """
+        Adds node to the front of linked list.
+        Running time: O(1)
+        """
         node = Node(key)
         if not self.head:
             self.head = node
@@ -43,14 +49,20 @@ class LinkedList(object):
             self.head = node
 
     def pop_front(self):
-        """Removes and returns the first node in linked list."""
+        """
+        Removes and returns the first node in linked list.
+        Running time: O(1)
+        """
         if self.head:
             temp = self.head
             self.head.next = temp.next
             return temp
 
     def pop_back(self):
-        """Removes and returns the last node."""
+        """
+        Removes and returns the last node.
+        Running time: O(n)
+        """
         if self.head:
             curr = self.head
             while curr.next and curr.next.next:
