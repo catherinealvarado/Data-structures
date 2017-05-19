@@ -1,11 +1,15 @@
-#PROBLEMS FROM LEETCODE AND CRACKING THE CODING INTERVIEW
-#I am extending the SinglyLinkedList class
 import singlyLinked
 
-class SinglyLinkedList(singlyLinked.SinglyLinkedList):
-
-    def remove_dups1(self): #Can use extra space
-        #remove duplicates from unsorted linked list
+class LinkedListFunctions(singlyLinked.LinkedList):
+    """
+    Additional singly linked list advanced functions.
+    """
+    def remove_dups1(self):
+        """
+        Removes duplicates from unsorted linked list. Additional
+        space is allowed.
+        Running time: O(n) Space: O(n)
+        """
         if self.head:
             vis = set()
             vis.add(self.head.key)
@@ -17,29 +21,35 @@ class SinglyLinkedList(singlyLinked.SinglyLinkedList):
                     vis.add(curr.next.key)
                     curr = curr.next
 
-    def remove_dups2(self): #Cannot use extra space
-        #remove duplicates from unsorted linked list
+    def remove_dups2(self):
+        """
+        Removes duplicates from unsorted linked list. Additional space
+        is not allowed.
+        Running time: O(n^2) Space: O(1)
+        """
         curr = self.head
-        second = self.head
+        runner = self.head
         while curr:
-            while second.next:
-                if curr.key != second.next.key:
-                    second = second.next
+            while runner.next:
+                if curr.key != runner.next.key:
+                    runner = runner.next
                 else:
-                    second.next = second.next.next
-            curr = second = curr.next
+                    runner.next = runner.next.next
+            curr = curr.next
+            runner = curr
+            # curr = runner = curr.next
 
-    def kth_last(self,k): #find the kth last element
+    # def kth_last(self,k): #find the kth last element
         ###continue by answering this question!!!
 
 
-linkedlst = SinglyLinkedList()
-linkedlst.push_back(1)
-linkedlst.push_back(2)
-linkedlst.push_back(2)
-linkedlst.push_back(2)
-linkedlst.push_back(3)
-linkedlst.push_back(1)
+linkedlst = LinkedListFunctions()
+linkedlst.insert(1)
+linkedlst.insert(2)
+linkedlst.insert(2)
+linkedlst.insert(2)
+linkedlst.insert(3)
+linkedlst.insert(1)
 print(linkedlst.__str__()) #[1,2,3]
 linkedlst.remove_dups2()
 print(linkedlst.__str__())
