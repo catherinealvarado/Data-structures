@@ -1,13 +1,15 @@
-#Basic implementation of a singly linked list
-class SinglyLinkedList:
-    #implementing a node class
-    class Node:
-        def __init__(self,key=None,next=None):
-            self.key = key
-            self.next = None
+class Node:
+    def __init__(self,key=None):
+        self.key = key
+        self.next = None
+
+class LinkedList(object):
+    """
+    Basic implementation of singly linked list.
+    """
 
     def __str__(self):
-        #prints out the linked list as a list
+        """Prints out the linked list as a list."""
         s = "["
         p = self.head
         if p:
@@ -20,18 +22,9 @@ class SinglyLinkedList:
     def __init__(self,head=None):
         self.head = head
 
-    def push_front(self,key):
-        #add node to the front
-        node = self.Node(key)
-        if not self.head:
-            self.head = node
-        else:
-            node.next = self.head
-            self.head = node
-
-    def push_back(self,key):
-        #add node to the back
-        node = self.Node(key)
+    def insert(self,key):
+        """Adds node to the back of linked list."""
+        node = Node(key)
         if not self.head:
             self.head = node
         else:
@@ -40,15 +33,24 @@ class SinglyLinkedList:
                 curr = curr.next
             curr.next = node
 
+    def push_front(self,key):
+        """Adds node to the front of linked list."""
+        node = Node(key)
+        if not self.head:
+            self.head = node
+        else:
+            node.next = self.head
+            self.head = node
+
     def pop_front(self):
-        #remove and return the first node
+        """Removes and returns the first node in linked list."""
         if self.head:
             temp = self.head
             self.head.next = temp.next
             return temp
 
     def pop_back(self):
-        #remove and return the last node
+        """Removes and returns the last node."""
         if self.head:
             curr = self.head
             while curr.next and curr.next.next:
