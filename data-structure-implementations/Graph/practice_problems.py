@@ -27,4 +27,4 @@ def topological_sort(graph_dict):
         top_sort.append(stack.pop())
     return top_sort
 
-print(topological_sort(dic))
+# print(topological_sort(dic))
