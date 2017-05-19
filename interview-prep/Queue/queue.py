@@ -1,18 +1,36 @@
-#Simple implementation of a queue
-#FIFO
-class Queue:
-    class Node:
-        def __init__(self,key=None,next=None):
-            self.key = key
-            self.next = next
+class Node:
+    """Simple node implementation."""
+    def __init__(self,key=None):
+        self.key = key
+        self.next = None
+
+class Queue(object):
+    """
+    Implementation of a queue.
+    Queue will follow FIFO (First In First Out).
+    """
 
     def __init__(self,head=None,tail=None):
         self.head = head
         self.tail = tail
 
+    def __str__(self):
+        """Prints out the queue as a list."""
+        s = "["
+        p = self.head
+        if p:
+            while p.next:
+                s += str(p.key) +", "
+                p = p.next
+            s += str(p.key) +"]"
+            return s
+
     def enqueue(self,key):
-        #add element to qeueu - it goes to the back
-        node = self.None(key)
+        """
+        Add new node to queue. Adds it to the end of queue.
+        Running time: O(1)
+        """
+        node = Node(key)
         if not self.head:
             self.head = node
             self.tail = node
@@ -21,7 +39,10 @@ class Queue:
             self.tail = node
 
     def dequeue(self):
-        #remove and return first in (FIFO)
+        """
+        Remove and return the first node in queue.
+        Running time: O(1)
+        """
         if self.head:
             temp = self.head
             self.head = self.head.next
