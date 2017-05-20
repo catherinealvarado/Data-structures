@@ -13,23 +13,24 @@ def partition(arr,left,right,pivot):
     Returns the left index once the left index is no longer smaller than
     the right index.
     """
-    while left < right:
-        while arr[left] < arr[pivot]:
+    while left <= right:
+        while arr[left] < pivot:
             left += 1
-        while arr[right] > arr[pivot]:
+        while arr[right] > pivot:
             right -=1
-        temp = arr[left]
-        arr[left] = arr[right]
-        arr[right] = temp
-        left += 1
-        right -= 1
+        if left <= right:
+            temp = arr[left]
+            arr[left] = arr[right]
+            arr[right] = temp
+            left += 1
+            right -= 1
     return left
 
 def quick_sort(arr,left,right):
     """Sorts the input array in place recursively."""
     if left >= right:
         return
-    pivot = (left + right) // 2
+    pivot = arr[(left + right) // 2]
     ind = partition(arr,left,right,pivot)
     quick_sort(arr, left, ind-1)
     quick_sort(arr, ind, right)
