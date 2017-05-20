@@ -21,6 +21,8 @@ def partition(arr,left,right,pivot):
         temp = arr[left]
         arr[left] = arr[right]
         arr[right] = temp
+        left += 1
+        right -= 1
     return left
 
 def quick_sort(arr,left,right):
@@ -29,8 +31,8 @@ def quick_sort(arr,left,right):
         return
     pivot = (left + right) // 2
     ind = partition(arr,left,right,pivot)
-    quick_sort(arr, left, ind)
-    quick_sort(arr, ind+1, right)
+    quick_sort(arr, left, ind-1)
+    quick_sort(arr, ind, right)
 
 def sort(arr):
     """Sorts and returns the array."""
