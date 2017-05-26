@@ -26,9 +26,9 @@ def median_sorted_lst(lst1,lst2):
         {b1,b2, some as},m2,{...},m1,{a3,a4,some bs}
         Can get rid of b1,b2,a3,a4 for sure and continue algorithm.
     '''
-    n = len(lst1)
     if not lst1:
         return 0
+    n = len(lst1)
     if n == 1:
         return (lst1[0] + lst2[0])/2
     if n == 2:
@@ -45,5 +45,3 @@ def median_sorted_lst(lst1,lst2):
         return median_sorted_lst(lst1[mid1:],lst2[:mid2+1])
     else:
         return median_sorted_lst(lst1[:mid1+1], lst2[mid2:])
-
-print(median_sorted_lst([],[2]))
