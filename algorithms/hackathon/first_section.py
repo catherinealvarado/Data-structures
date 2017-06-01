@@ -134,3 +134,20 @@ def house_robber(lst):
         prev_prev = prev
         prev = max(prev_prev,temp)
     return prev
+
+'''
+219: Contains Duplicate II -
+Given an array of integers and an integer k, find out whether there are two
+distinct indices i and j in the array such that nums[i] = nums[j] and the
+absolute difference between i and j is at most k.
+[1,2,3,9,5,2] k = 3
+
+'''
+def contains_duplicate(lst,k):
+    n = len(lst)
+    for i in range(n):
+        for j in range(i+1,i+k+1):
+            if j < n and lst[i] == lst[j]:
+                return True
+    return False
+print(contains_duplicate([1,2,1,9,5,2],3))
