@@ -6,7 +6,7 @@ possible within two hours.
 '''
 
 '''
-1: Two Sum:
+1: Two Sum -
 Given an array of integers, return indices of the two numbers such that they
 add up to a specific target.
 Assumptions:
@@ -24,7 +24,7 @@ def two_sum(lst,sum_tot):
             diff_dic[sum_tot-val] = ind
 
 '''
-292: Nim Game:
+292: Nim Game -
 Given number of stones determine whether you will win the game
 I can remove 1,2,3
 example: 4 I will lose
@@ -38,7 +38,7 @@ example: 4 I will lose
 '''
 
 '''
-344: Reverse a string:
+344: Reverse a string -
 Takes a string as a input and reverses the string.
 '''
 def rev_string(s):
@@ -54,9 +54,28 @@ def rev_string(s):
     return ' '.join(rev)
 
 '''
-136: Single number:
+136: Single number -
 Given an array of integers, every element appears twice except for one.
 Find that single one.
 Your algorithm should have a linear runtime complexity. Could you implement
 it without using extra memory?
+[1,2,3,3,2,4,5,7,4,5,7]
+'''
+def single_number(lst):
+    curr = lst[0]
+    for i in range(1,len(lst)):
+        curr = curr ^ lst[i]
+    return curr
+print(single_number([1,2,3,3,2,4,5,7,4,5,7]))
+
+'''
+2: Add two numbers -
+You are given two non-empty linked lists representing two non-negative
+integers. The digits are stored in reverse order and each of their nodes
+contain a single digit. Add the two numbers and return it as a linked list.
+You may assume the two numbers do not contain any leading zero, except
+the number 0 itself.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
 '''
