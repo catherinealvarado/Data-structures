@@ -38,7 +38,7 @@ example: 4 I will lose
 '''
 
 '''
-344: Reverse a string.
+344: Reverse a string:
 Takes a string as a input and reverses the string.
 '''
 def rev_string(s):
@@ -46,14 +46,17 @@ def rev_string(s):
     for i in range(len(rev)):
         curr = rev[i]
         n = len(curr)
-        for j in range(n//2): #[['c','a','t']..] 1
+        for j in range(n//2):
             temp = curr[j]
             curr[j] = curr[n-1-j]
             curr[n-1-j] = temp
         rev[i] = ''.join(rev[i])
     return ' '.join(rev)
-print(rev_string(""))
 
-
-
-print(rev_string("The cat"))
+'''
+136: Single number:
+Given an array of integers, every element appears twice except for one.
+Find that single one.
+Your algorithm should have a linear runtime complexity. Could you implement
+it without using extra memory?
+'''
