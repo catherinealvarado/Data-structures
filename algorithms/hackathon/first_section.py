@@ -25,4 +25,35 @@ def two_sum(lst,sum_tot):
 
 '''
 292: Nim Game:
+Given number of stones determine whether you will win the game
+I can remove 1,2,3
+example: 4 I will lose
+
+3 <= 3 I win
+4 - - - - No win
+5 - - - - - Yes win
+6 - - - - - - Yes win
+7 - - - - - - - Yes
+8 - - - - - - - - N
 '''
+
+'''
+344: Reverse a string.
+Takes a string as a input and reverses the string.
+'''
+def rev_string(s):
+    rev = [list(word) for word in s.split(' ')]
+    for i in range(len(rev)):
+        curr = rev[i]
+        n = len(curr)
+        for j in range(n//2): #[['c','a','t']..] 1
+            temp = curr[j]
+            curr[j] = curr[n-1-j]
+            curr[n-1-j] = temp
+        rev[i] = ''.join(rev[i])
+    return ' '.join(rev)
+print(rev_string(""))
+
+
+
+print(rev_string("The cat"))
