@@ -18,9 +18,11 @@ not use the same element twice.
 def two_sum(lst,sum_tot):
     diff_dic = {}
     for ind,val in enumerate(lst):
-        diff = sum_tot - val
-        if diff in diff_dic:
-            return [diff_dic[diff],ind]
+        if val in diff_dic:
+            return [diff_dic[val],ind]
         else:
-            diff_dic[diff] = ind
-print(two_sum([1,5,4,6,5]))
+            diff_dic[sum_tot-val] = ind
+
+'''
+292: Nim Game:
+'''
