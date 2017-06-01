@@ -59,14 +59,13 @@ Given an array of integers, every element appears twice except for one.
 Find that single one.
 Your algorithm should have a linear runtime complexity. Could you implement
 it without using extra memory?
-[1,2,3,3,2,4,5,7,4,5,7]
+[1,2,3,3,2,4,5,7,4,5,7] (we can use ^)
 '''
 def single_number(lst):
     curr = lst[0]
     for i in range(1,len(lst)):
         curr = curr ^ lst[i]
     return curr
-print(single_number([1,2,3,3,2,4,5,7,4,5,7]))
 
 '''
 2: Add two numbers -
@@ -79,3 +78,29 @@ the number 0 itself.
 Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 '''
+class Node:
+    def __init__(self,val=None):
+        self.val = val
+        self.next = None
+
+def add_linked_lists(l1,l2):
+    carry = 0
+    dummy = Node("dummy")
+    prev = dummy
+    while l1 or l2:
+        curr_sum = 0
+        curr_sum += carry
+        if l1:
+            curr_sum += l1.val
+            l1 = l1.next
+        if l2:
+            curr_sum += l2.val
+            l2 = l2.next
+        rem = curr_sum % 10
+        carry = curr_sum // 10
+        new_val = Node(rem)
+        prev.next = new_val
+        prev = new_val
+    if carry == 1:
+        prev.next = ListNode(1)
+    return dummy.next
