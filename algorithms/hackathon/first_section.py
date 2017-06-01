@@ -35,6 +35,9 @@ example: 4 I will lose
 6 - - - - - - Yes win
 7 - - - - - - - Yes
 8 - - - - - - - - N
+
+
+--- if youre a multiple of 4 you are guaranteed to win 
 '''
 
 '''
@@ -96,11 +99,44 @@ def add_linked_lists(l1,l2):
         if l2:
             curr_sum += l2.val
             l2 = l2.next
-        rem = curr_sum % 10
+        new_val = Node(curr_sum % 10)
         carry = curr_sum // 10
-        new_val = Node(rem)
         prev.next = new_val
         prev = new_val
     if carry == 1:
         prev.next = ListNode(1)
     return dummy.next
+
+'''
+198: House Robber -
+You are a professional robber planning to rob houses along a street. Each
+house has a certain amount of money stashed, the only constraint stopping
+you from robbing each of them is that adjacent houses have security system
+connected and it will automatically contact the police if two adjacent
+houses were broken into on the same night.
+
+Given a list of non-negative integers representing the amount of money of
+each house, determine the maximum amount of money you can rob tonight without
+alerting the police.
+[10,2,13,1,56,1]
+max(one_before,two_before+lst[i])
+one_before = 10
+two_before = 0
+
+----
+curr_max  10
+two_before = 10
+one_before = 2
+
+'''
+def house_robber(lst):
+    if not lst:
+        return 0
+    one_before = lst[0]
+    two_before = 0
+    for i in range(1,len(lst)):
+        curr_max = max(one_before,lst[i]+two_before)
+        temp = two_before
+        two_before = one_before
+        one_before = lst[i]+temp
+    return curr_max
