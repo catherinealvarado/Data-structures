@@ -37,7 +37,7 @@ example: 4 I will lose
 8 - - - - - - - - N
 
 
---- if youre a multiple of 4 you are guaranteed to win 
+--- if youre a multiple of 4 you are guaranteed to win
 '''
 
 '''
@@ -118,25 +118,19 @@ houses were broken into on the same night.
 Given a list of non-negative integers representing the amount of money of
 each house, determine the maximum amount of money you can rob tonight without
 alerting the police.
-[10,2,13,1,56,1]
-max(one_before,two_before+lst[i])
-one_before = 10
-two_before = 0
-
-----
-curr_max  10
-two_before = 10
-one_before = 2
-
+[10,2,13,1,61,1] max_amount = 84
+[20,1,1,20] max_amount = 40
 '''
 def house_robber(lst):
+    n = len(lst)
     if not lst:
         return 0
-    one_before = lst[0]
-    two_before = 0
-    for i in range(1,len(lst)):
-        curr_max = max(one_before,lst[i]+two_before)
-        temp = two_before
-        two_before = one_before
-        one_before = lst[i]+temp
-    return curr_max
+    if n == 1:
+        return lst[0]
+    prev_prev = lst[0]
+    prev = max(prev_prev,lst[1])
+    for i in range(2,len(lst)):
+        temp = prev_prev + lst[i]
+        prev_prev = prev
+        prev = max(prev_prev,temp)
+    return prev
