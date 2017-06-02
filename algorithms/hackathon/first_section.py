@@ -159,4 +159,23 @@ def contains_duplicate(lst,k):
 108: Convert Sorted Array to Binary Search Tree -
 Given an array where elements are sorted in ascending order, convert it
 to a height balanced BST.
+[1,2,3,4,5,6,7,8]
+
+'''
+class TreeNode:
+    def __init__(self,val=None):
+        self.val =  val
+        self.left = None
+        self.right = None
+
+def sorted_arr_bin_search(lst):
+    if not lst:
+        return None
+    mid = len(lst)//2
+    root = TreeNode(lst[mid])
+    root.left = sorted_arr_bin_search(lst[:mid])
+    root.right = sorted_arr_bin_search(lst[mid:])
+    return root
+
+'''
 '''
