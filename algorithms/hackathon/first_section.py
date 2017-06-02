@@ -207,3 +207,11 @@ def is_happy(num):
         slow = find_squares_sum(slow)
         fast = find_squares_sum(find_squares_sum(fast))
     return slow == 1
+
+'''
+190: Reverse Bits -
+Reverse bits of a given 32 bits unsigned integer.
+For example, given input 43261596 (represented in binary as
+00000010100101000001111010011100), return 964176192 (represented in binary as
+00111001011110000010100101000000).
+'''
