@@ -178,4 +178,34 @@ def sorted_arr_bin_search(lst):
     return root
 
 '''
+202: Happy Number -
+Write an algorithm to determine if a number is "happy".
+A happy number is a number defined by the following process: Starting with
+any positive integer, replace the number by the sum of the squares of its
+digits, and repeat the process until the number equals 1 (where it will
+stay), or it loops endlessly in a cycle which does not include 1. Those
+numbers for which this process ends in 1 are happy numbers.
+
+
+19 {19}
+
+sum = 9*9 + 1*1
+19
 '''
+def find_squares_sum(n):
+    curr_sum = 0
+    while n:
+        last = n % 10
+        curr_sum += last*last
+        n = n//10
+    return curr_sum
+
+def happy_number(num):
+    vis_nums = set()
+    while num:
+        if num in vis_nums:
+            return False
+        if num == 1:
+            return True
+        vis_nums.add(num)
+        num = find_squares_sum(num)
