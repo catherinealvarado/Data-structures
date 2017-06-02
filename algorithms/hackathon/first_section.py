@@ -200,12 +200,10 @@ def find_squares_sum(n):
         n = n//10
     return curr_sum
 
-def happy_number(num):
-    vis_nums = set()
-    while num:
-        if num in vis_nums:
-            return False
-        if num == 1:
-            return True
-        vis_nums.add(num)
-        num = find_squares_sum(num)
+def is_happy(num):
+    slow = num
+    fast = find_squares_sum(find_squares_sum(slow))
+    while slow != fast:
+        slow = find_squares_sum(slow)
+        fast = find_squares_sum(find_squares_sum(fast))
+    return slow == 1
