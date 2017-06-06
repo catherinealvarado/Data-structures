@@ -261,3 +261,13 @@ def valid_parenthesis(st):
         else:
             return False
     return len(stack) == 0
+
+'''
+371: Sum of Two Integers - RETURN TO THIS PROBLEM!!
+Calculate the sum of two integers a and b, but you are not allowed to use
+the operator + and -.
+ 4 + 3 = 7
+ 100
+  11
+ 111
+'''
