@@ -4,7 +4,7 @@ I am doing a self hackathon where I answer as many questions as
 possible within two hours.
 (There are the current most popular questions on Leetcode.)
 '''
-
+from collections import deque
 '''
 1: Two Sum -
 Given an array of integers, return indices of the two numbers such that they
@@ -247,3 +247,17 @@ determine if the input string is valid.
 The brackets must close in the correct order, "()" and "()[]{}" are all
 valid but "(]" and "([)]" are not.
 '''
+def valid_parenthesis(st):
+    stack = deque()
+    for char in st:
+        if char == '(' or char == '{' or char == '[':
+            stack.append(char)
+        elif stack:
+            last_left = stack.pop()
+            if (char == ')' and last_left != '(') or \
+               (char == ']' and last_left != '[') or \
+               (char == '}' and last_left != '{'):
+               return False
+        else:
+            return False
+    return len(stack) == 0
