@@ -217,11 +217,13 @@ For example, given input 43261596 (represented in binary as
 '''
 def reverse_bits(num):
     rev = 0
-    while num:
-        rev =  rev + num & 1
+    mask = 0xFFFFFFFF
+    num = num & mask
+    for i in range(0,32):
+        rev = rev + (num & 1)
         num = num >> 1
-        rev = rev << 1
-    print(rev)
+        if i < 31:
+            rev = rev << 1
     return rev
 
 print(reverse_bits(43261596))
