@@ -215,3 +215,13 @@ For example, given input 43261596 (represented in binary as
 00000010100101000001111010011100), return 964176192 (represented in binary as
 00111001011110000010100101000000).
 '''
+def reverse_bits(num):
+    rev = 0
+    while num:
+        rev =  rev + num & 1
+        num = num >> 1
+        rev = rev << 1
+    print(rev)
+    return rev
+
+print(reverse_bits(43261596))
