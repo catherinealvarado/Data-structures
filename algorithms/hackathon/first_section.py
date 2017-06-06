@@ -185,12 +185,12 @@ any positive integer, replace the number by the sum of the squares of its
 digits, and repeat the process until the number equals 1 (where it will
 stay), or it loops endlessly in a cycle which does not include 1. Those
 numbers for which this process ends in 1 are happy numbers.
-
-
-19 {19}
-
-sum = 9*9 + 1*1
-19
+Given: 19
+9*9 + 1*1 = 82
+8*8 + 2*2 = 64 + 4 = 68
+6*6 + 8*8 = 64 + 36 = 100
+1*1 + 0*0 + 0*0 = 1
+19 is a happy number!
 '''
 def find_squares_sum(n):
     curr_sum = 0
